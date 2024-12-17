@@ -1,0 +1,48 @@
+[httpServer]
+addr = "0.0.0.0:8001"
+timeout = "180s"
+
+[grpcServer]
+addr = "0.0.0.0:9001"
+timeout = "180s"
+
+[mysql]
+driver = "mysql"
+dsn = "root:root@tcp(127.0.0.1:3306)/hcp?timeout=1s&readTimeout=10s&writeTimeout=10s&parseTime=true&loc=Local&charset=utf8mb4,utf8"
+readDSN = ["root:root@tcp(127.0.0.1:3306)/hcp?timeout=1s&readTimeout=10s&writeTimeout=10s&parseTime=true&loc=Local&charset=utf8mb4,utf8"]
+active = 20
+idle = 10
+idleTimeout ="4h"
+queryTimeout = "10000ms"
+execTimeout = "10000ms"
+tranTimeout = "10000ms"
+
+[cloud_secret]
+secret_aes_key = "2f9xh36akvtxxylwd9id65gnxonjntmz"
+
+[server_spec]
+[server_spec.gpu]
+gpu_models = ["Tesla V100-NVLINK-32G","NVIDIA T4","Tesla P40","NVIDIA A100","NVIDIA A10"]
+
+[cloud_sync]
+sync_interval = 1
+concurrency_account = 2
+sync = true
+clear = false
+scan_at = false
+sync_cron = false
+
+[job]
+issue_wait = 200
+
+[login]
+expire_second = 604800
+secret_key = "MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAMLRzn36jYQGZledaC80HdTrmB0h2DQd"
+letter_bytes = "iJMk5ds425BGXiTCdMHdb8jCNmA5N9wab3D1di1pw9ce1PDQHmNbaNCx2r6KJKRC"
+
+[cloud]
+tag_project_key = "project" #用于标签key用于关联项目
+terraform_path = "/app/data/cloud/terraform/workpath/prod"
+terraform_bin = "tofu"
+terraform_plugin = "/app/tofu-plugin/providers"
+
